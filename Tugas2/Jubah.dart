@@ -1,5 +1,3 @@
-import 'Jagoan.dart';
-import 'Senjata.dart';
 import 'dart:io';
 
 class Jubah {
@@ -22,9 +20,9 @@ class Jubah {
     }
 }
 
-void main() {
-  Jubah jubahh = Jubah("adel", 10, 30);
-  print(jubahh.getNama());
-  print(jubahh.getTambahKesehatan());
-  print(jubahh.getNilaiKekuatan());
-}
+//void main() {
+//  Jubah jubahh = Jubah("adel", 10, 30);
+//  print(jubahh.getNama());
+//  print(jubahh.getTambahKesehatan());
+//  print(jubahh.getNilaiKekuatan());
+//}

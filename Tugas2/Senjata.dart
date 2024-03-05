@@ -1,5 +1,3 @@
-import 'Jagoan.dart';
-import 'Jubah.dart';
 import 'dart:io';
 
 class Senjata {
@@ -17,8 +15,8 @@ class Senjata {
   }
 }
 
-void main() {
-  Senjata pistol = Senjata("pistol", 30);
-  print(pistol.getNama());
-  print(pistol.getKekuatanSerang());
-}
+//void main() {
+// Senjata pistol = Senjata("pistol", 30);
+//  print(pistol.getNama());
+//  print(pistol.getKekuatanSerang());
+//}
