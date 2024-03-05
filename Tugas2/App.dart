@@ -35,14 +35,14 @@ void main() {
   print("${jakaSembung.nama}: ${jakaSembung.getNilaiKesehatan()}");
 
   if (pitung.getStatus() && !jakaSembung.getStatus()) {
-    print("${pitung.nama} menang cuy!");
+    print("${pitung.nama} Menang cuy!");
   } else if (!pitung.getStatus() && jakaSembung.getStatus()) {
-    print("${jakaSembung.nama} menang cuy!");
+    print("${jakaSembung.nama} Menang cuy!");
   } else {
     if (pitung.getNilaiKesehatan() > jakaSembung.getNilaiKesehatan()) {
-      print("${pitung.nama} menang cuy!");
+      print("${pitung.nama} Menang cuy!");
     } else if (pitung.getNilaiKesehatan() < jakaSembung.getNilaiKesehatan()) {
-      print("${jakaSembung.nama} menang cuy!");
+      print("${jakaSembung.nama} Menang cuy!");
     } else {
       print("Kedua jagoan seri, cuy!");
     }
