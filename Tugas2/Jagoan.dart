@@ -1,29 +1,21 @@
 import 'dart:io';
 import 'Jubah.dart';
 import 'Senjata.dart';
-import 'dart:io';
 
 class Jagoan {
   String nama;
   int kesehatanDasar;
   int kekuatanDasar;
   int derajat;
-  int totalKerusakan;
+  int totalKerusakan = 0;
   int kenaikanKesehatan;
   int kenaikanKekuatan;
   bool hidup;
 
-  Jubah? jubah;
-  Senjata? senjata; 
+  late Jubah jubah;
+  late Senjata senjata; 
 
-  Jagoan(this.nama)
-      : kesehatanDasar = 100,
-        kekuatanDasar = 100,
-        derajat = 1,
-        totalKerusakan = 0,
-        kenaikanKesehatan = 10,
-        kenaikanKekuatan = 10,
-        hidup = true;
+  Jagoan(this.nama,this.kesehatanDasar,this.kekuatanDasar,this.derajat,this.kenaikanKesehatan,this.kenaikanKekuatan,this.hidup);
 
   void setJubah(Jubah jubah) {
     this.jubah = jubah;
@@ -33,42 +25,34 @@ class Jagoan {
     this.senjata = senjata;
   }
 
-//  int sehatMaksimal() {
-//    return kesehatanDasar +
-//        (jubah != null ? jubah!.getTambahKesehatan() : 0) +
-//        derajat * kenaikanKesehatan;
-//  }
-
-//  int getKekuatanSerangJagoan() {
-//    return kekuatanDasar +
-//        (senjata != null ? senjata!.getKekuatanSerang() : 0) +
-//        derajat * kenaikanKekuatan;
-//  }
+  String getNama() {
+    return this.nama;
+  }
 
   int sehatMaksimal() {
-      return kesehatanDasar + jubah!.getTambahKesehatan() + derajat * kenaikanKesehatan;
+      return this.kesehatanDasar + this.jubah.getTambahKesehatan() + this.derajat * this.kenaikanKesehatan;
   }
 
   int getKekuatanSerangJagoan() {
-      return kekuatanDasar + senjata!.getKekuatanSerang() + derajat * kenaikanKekuatan;
+      return this.kekuatanDasar + this.senjata.getKekuatanSerang() + this.derajat * this.kenaikanKekuatan;
   }
 
   int getNilaiKesehatan() {
-      return sehatMaksimal() - totalKerusakan;
+      return sehatMaksimal() - this.totalKerusakan;
   }
 
   void naikDerajat() {
-    derajat++;
+    this.derajat++;
   }
 
   bool getStatus() {
-    return hidup;
+    return this.hidup;
   }
 
   void menyerang(Jagoan lawan) {
     int kerusakan = getKekuatanSerangJagoan();
 
-    print("$nama menyerang ${lawan.nama} dengan kekuatan $kerusakan");
+    print("${this.nama} menyerang ${lawan.getNama()} dengan kekuatan $kerusakan");
 
     lawan.bertahan(kerusakan);
 
@@ -77,10 +61,10 @@ class Jagoan {
 
   void bertahan(int kerusakan) {
     //int kekuatanBertahan = jubah != null ? jubah!.getNilaiKekuatan() : 0;
-    int kekuatanBertahan = jubah!.getNilaiKekuatan();
+    int kekuatanBertahan = this.jubah.getNilaiKekuatan();
     int selisihKerusakan;
     
-    print("$nama memiliki kekuatan bertahan: $kekuatanBertahan");
+    print("${this.nama} memiliki kekuatan bertahan: $kekuatanBertahan");
     
     if (kerusakan > kekuatanBertahan) {
       selisihKerusakan = kerusakan - kekuatanBertahan;
@@ -91,47 +75,32 @@ class Jagoan {
     print("Kerusakan yang diperoleh: $selisihKerusakan\n");
 
     // tambah total kerusakan
-    totalKerusakan += selisihKerusakan;
+    this.totalKerusakan += selisihKerusakan;
 
     // periksa apakah jagoan masih hidup?
     if (getNilaiKesehatan() <= 0) {
-      hidup = false;
-      totalKerusakan = sehatMaksimal();
+      this.hidup = false;
+      this.totalKerusakan = sehatMaksimal();
     }
 
     info();
   }
 
   void info() {
-    print("Jagoan\t\t\t: $nama");
-    print("Derajat\t\t\t: $derajat");
-    print("Kesehatan Dasar\t\t: $kesehatanDasar");
-    print("Kekuatan Dasar\t\t: $kekuatanDasar");
+    print("Jagoan\t\t\t: ${this.nama}");
+    print("Derajat\t\t\t: ${this.derajat}");
+    print("Kesehatan Dasar\t\t: ${this.kesehatanDasar}");
+    print("Kekuatan Dasar\t\t: ${this.kekuatanDasar}");
     print("Kesehatan\t\t: ${getNilaiKesehatan()}/${sehatMaksimal()}");
     print("Kekuatan Maksimal\t: ${getKekuatanSerangJagoan()}");
-    print("Masih hidup?\t\t: $hidup\n");
+    print("Masih hidup?\t\t: ${this.hidup}\n");
   }
-
-//  void getNamaJubah() {
-//    if (jubah != null) {
-//      print("Jubah\t\t\t: ${jubah!.nama}");
-//    } else {
-//      print("Jubah\t\t\t: -");
-//    }
-//  }
-
-//  void getNamaSenjata() {
-//    if (senjata != null) {
-//      print("Senjata\t\t\t: ${senjata!.nama}");
-//    } else {
-//      print("Senjata\t\t\t: -");
-//    }
-//  }
+  
   void getNamaJubah() {
-    print('Jubah\t\t\t: ${jubah!.getNama()}');
+    print('Jubah\t\t\t: ${this.jubah.getNama()}');
   }
 
   void getNamaSenjata() {
-    print('Senjata\t\t\t: ${senjata!.getNama()}');
+    print('Senjata\t\t\t: ${this.senjata.getNama()}');
   }
 }

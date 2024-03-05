@@ -4,14 +4,14 @@ import 'Jubah.dart';
 import 'Senjata.dart';
 
 void main() {
-  Jagoan pitung = Jagoan("Pitung");
+  Jagoan pitung = Jagoan("Pitung",100,100,1,10,10,true);
   Jubah jubahSilatPutih = Jubah("Jubah Silat Putih", 7, 50);
   Senjata golok = Senjata("Golok", 20);
 
   pitung.setJubah(jubahSilatPutih);
   pitung.setSenjata(golok);
 
-  Jagoan jakaSembung = Jagoan("Jaka Sembung");
+  Jagoan jakaSembung = Jagoan("Jaka Sembung",100,100,1,10,10,true);
   Jubah jubahSilatHitam = Jubah("Jubah Silat Hitam", 10, 50);
   Senjata toya = Senjata("Toya", 25);
 
