@@ -27,6 +27,7 @@ class QuizzlerApp extends StatelessWidget {
             ),
           ),
           backgroundColor: Colors.lightGreenAccent,
+          centerTitle: true,
         ),
         body: const SafeArea(
           child: Padding(
@@ -50,7 +51,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
   // menghitung jawaban benar dan salah
-  int numCorrect = 0;
+  int numCorrect = 1;
   int numIncorrect = 0;
 
   void checkAnswer(bool userPickedAnswer) {

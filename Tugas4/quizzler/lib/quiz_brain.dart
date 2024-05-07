@@ -35,7 +35,7 @@ class QuizBrain {
 
   //TODO: Step 3 Part A - create isFinished method that checks the last questions.
   bool isFinished() {
-    if (_questionNumber >= _questionBank.length - 1 ) {
+    if (_questionNumber >= _questionBank.length - 1) {
       print('returning true');
       return true;
     } else {
